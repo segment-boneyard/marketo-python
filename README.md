@@ -12,7 +12,8 @@ pip install marketo
 ```python
 import marketo
 client = marketo.Client(soap_endpoint='https://na-q.marketo.com/soap/mktows/2_0',
-                        user_id='bigcorp1_461839624B16E06BA2D663',    encryption_key='899756834129871744AAEE88DDCC77CDEEDEC1AAAD66')
+                        user_id='bigcorp1_461839624B16E06BA2D663',
+                        encryption_key='899756834129871744AAEE88DDCC77CDEEDEC1AAAD66')
 ```
 
 ## Get Lead
