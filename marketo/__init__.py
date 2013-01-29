@@ -2,7 +2,8 @@
 import requests
 import auth
 
-from wrapper import get_lead
+from marketo.wrapper import get_lead
+
 
 class Client:
 
