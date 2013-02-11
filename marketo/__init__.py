@@ -2,7 +2,7 @@
 import requests
 import auth
 
-from marketo.wrapper import get_lead
+from marketo.wrapper import get_lead, get_lead_activity
 
 
 class Client:
@@ -56,5 +56,17 @@ class Client:
         response = self.request(body)
         if response.status_code == 200:
             return get_lead.unwrap(response)
+        else:
+            raise Exception(response.text)
+
+    def get_lead_activity(self, email=None):
+
+        if not email or not isinstance(email, str):
+            raise ValueError('Must supply an email as a non empty string.')
+
+        body = get_lead_activity.wrap(email)
+        response = self.request(body)
+        if response.status_code == 200:
+            return get_lead_activity.unwrap(response)
         else:
             raise Exception(response.text)

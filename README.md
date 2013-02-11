@@ -33,6 +33,22 @@ This function retrieves a single lead record from Marketo.
 
 XML unwrapped [here](https://github.com/segmentio/marketo-python/blob/master/marketo/wrapper/lead_record.py).
 
+## Get Lead Activity
+
+```python
+> activities = client.get_lead_activity(email='user@gmail.com')
+[Activity (16095520 - Visit Webpage), Activity (16095507 - Click Link), Activity (16095506 - Click Link)]
+> activity = activities[0]
+> activity.id
+'16095520'
+> activity.type
+'Visit Webpage'
+> activity.attributes
+{'Webpage ID': '20499', 'Message Id': '19122416', 'Webpage URL': '/pricing', 'Lead ID': '1474562', 'Query Parameters': None, 'Referrer URL': 'https://company.com/appointments/', 'Client IP Address': '61.183.85.141', 'User Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17', 'Created At': '2013-02-11 16:19:48'}
+```
+
+XML unwrapped [here](https://github.com/segmentio/marketo-python/blob/master/marketo/wrapper/get_lead_activity.py).
+
 ### Error
 
 An Exception is raised if the lead is not found, or if a Marketo error occurs.

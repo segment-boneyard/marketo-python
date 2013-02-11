@@ -1,21 +1,25 @@
+import iso8601
 
 
-class LeadRecord:
+class LeadActivity:
 
     def __init__(self):
+        self.id = 'unknown'
+        self.type = 'unknown'
         self.attributes = {}
 
     def __str__(self):
-        return "Lead (%s - %s)" % (self.id, self.email)
+        return "Activity (%s - %s)" % (self.id, self.type)
 
     def __repr__(self):
         return self.__str__()
 
 
 def unwrap(xml):
-    lead = LeadRecord()
-    lead.id = xml.find('Id').text
-    lead.email = xml.find('Email').text
+    activity = LeadActivity()
+    activity.id = xml.find('id').text
+    activity.timestamp = iso8601.parse_date(xml.find('activityDateTime').text)
+    activity.type = xml.find('activityType').text
 
     for attribute in xml.findall('.//attribute'):
         name = attribute.find('attrName').text
@@ -25,6 +29,6 @@ def unwrap(xml):
         if attr_type == 'integer':
             val = int(val)
 
-        lead.attributes[name] = val
+        activity.attributes[name] = val
 
-    return lead
+    return activity
