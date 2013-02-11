@@ -1,4 +1,6 @@
 
+VERSION = '0.0.5'
+
 import requests
 import auth
 
