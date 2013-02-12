@@ -1,5 +1,5 @@
 
-VERSION = '0.0.5'
+VERSION = '0.0.6'
 
 import requests
 import auth
@@ -14,7 +14,7 @@ class Client:
         if not soap_endpoint or not isinstance(soap_endpoint, str):
             raise ValueError('Must supply a soap_endpoint as a non empty string.')
 
-        if not user_id or not isinstance(user_id, str):
+        if not user_id or not isinstance(user_id, (str, unicode)):
             raise ValueError('Must supply a user_id as a non empty string.')
 
         if not encryption_key or not isinstance(encryption_key, str):
@@ -51,7 +51,7 @@ class Client:
 
     def get_lead(self, email=None):
 
-        if not email or not isinstance(email, str):
+        if not email or not isinstance(email, (str, unicode)):
             raise ValueError('Must supply an email as a non empty string.')
 
         body = get_lead.wrap(email)
@@ -63,7 +63,7 @@ class Client:
 
     def get_lead_activity(self, email=None):
 
-        if not email or not isinstance(email, str):
+        if not email or not isinstance(email, (str, unicode)):
             raise ValueError('Must supply an email as a non empty string.')
 
         body = get_lead_activity.wrap(email)
