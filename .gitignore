@@ -5,3 +5,5 @@ dist
 dist
 MANIFEST
 build
+
+hidden-test.py
