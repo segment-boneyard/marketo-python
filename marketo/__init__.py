@@ -1,5 +1,8 @@
 
-VERSION = '0.0.6'
+import version
+
+VERSION = version.VERSION
+__version__ = VERSION
 
 import requests
 import auth

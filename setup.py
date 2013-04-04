@@ -1,5 +1,15 @@
-from marketo import VERSION
-from distutils.core import setup
+
+import os
+import sys
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
+# Don't import analytics-python module here, since deps may not be installed
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'marketo'))
+from version import VERSION
 
 long_description = '''
 marketo-python is a python query client that wraps the Marketo SOAP API.
