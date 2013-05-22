@@ -64,7 +64,29 @@ except Exception as error:
 '''
 ```
 
+## Sync Lead
 
+This function updates a single lead record from Marketo. If a lead without a matching email isn't found in the database, a new one is created. If the request is successful, the lead record is returned.
+
+```python
+lead = client.sync_lead(
+    email='user@gmail.com',
+    attributes=(
+        ('City', 'string', 'Toronto'),
+        ('Country', 'string', 'Canada'),
+        ('Title', 'string', 'Web Developer'),
+    )
+)
+```
+
+## Request Campaign
+
+This function triggers a Marketo campaign request (typically used to activate a campaign after a user has filled out a form). This requires the numeric ID of both a campaign and the lead that is to be associated with the campaign. Returns True on success.
+
+```python
+> campaign = client.request_campaign('1190', '384563')
+True
+```
 
 ## License
 
